@@ -11,7 +11,7 @@ CREATE TABLE
         AvatarID INT AUTO_INCREMENT PRIMARY KEY,
         AvatarName VARCHAR(50) NOT NULL,
         ImageUrl VARCHAR(255)
-    ) ENGINE=InnoDB;  -- spécification explicite du moteur
+    ) ENGINE=InnoDB;
 
 -- Create table Players --
 CREATE TABLE
@@ -26,8 +26,8 @@ CREATE TABLE
         CreatedAt DATETIME DEFAULT CURRENT_TIMESTAMP,
         LastLogin DATETIME DEFAULT NULL,
         FOREIGN KEY (AvatarID) REFERENCES Avatar (AvatarID)
-        ON DELETE SET NULL -- Pour éviter des erreurs sur la suppression d'un avatar
-    ) ENGINE=InnoDB;  -- spécification explicite du moteur
+        ON DELETE SET NULL
+    ) ENGINE=InnoDB;
 
 -- Create table Games --
 CREATE TABLE
@@ -37,8 +37,8 @@ CREATE TABLE
         StartTime DATETIME DEFAULT CURRENT_TIMESTAMP,
         EndTime TIME,
         FOREIGN KEY (PlayerID) REFERENCES Player (PlayerID)
-        ON DELETE CASCADE -- Suppression en cascade des parties si le joueur est supprimé
-    ) ENGINE=InnoDB;  -- spécification explicite du moteur
+        ON DELETE CASCADE
+    ) ENGINE=InnoDB;
 
 -- Create table Score --
 CREATE TABLE
@@ -51,5 +51,5 @@ CREATE TABLE
         Level INT,
         Creation DATETIME DEFAULT CURRENT_TIMESTAMP,
         FOREIGN KEY (GameID) REFERENCES Game (GameID)
-        ON DELETE CASCADE -- Suppression en cascade des scores si la partie est supprimée
-    ) ENGINE=InnoDB;  -- spécification explicite du moteur
+        ON DELETE CASCADE
+    ) ENGINE=InnoDB;
