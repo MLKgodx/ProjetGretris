@@ -19,13 +19,16 @@ SET time_zone = "+00:00";
 
 --
 -- Base de données : `gretris`
---
+CREATE DATABASE gretris;
+
+USE gretris;
 
 -- --------------------------------------------------------
 
 --
 -- Structure de la table `avatars`
 --
+
 
 DROP TABLE IF EXISTS `avatar`;
 CREATE TABLE IF NOT EXISTS `avatar` (
