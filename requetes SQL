@@ -1,0 +1,2 @@
+// Creation compte utilisateur MySQL joueur
+CREATE USER GRANT SELECT, INSERT, UPDATE ON `gretris`.* TO 'GretrisPlayer'@'localhost'; ALTER USER 'GretrisPlayer'@'localhost' ; 
