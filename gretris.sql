@@ -1,101 +1,53 @@
--- phpMyAdmin SQL Dump
--- version 5.2.1
--- https://www.phpmyadmin.net/
---
--- Hôte : 127.0.0.1:3306
--- Généré le : mer. 23 oct. 2024 à 08:49
--- Version du serveur : 8.3.0
--- Version de PHP : 8.2.18
+-- Create database Gretris --
+DROP DATABASE IF EXISTS Gretris;
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
+CREATE DATABASE Gretris;
 
+USE Gretris;
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+-- Create table Avatar--
+CREATE TABLE
+     Avatar (
+        AvatarID INT AUTO_INCREMENT PRIMARY KEY,
+        AvatarName VARCHAR(64) NOT NULL,
+        ImageUrl VARCHAR(256));
 
---
--- Base de données : `gretris`
-CREATE DATABASE gretris;
+-- Create table Players --
+CREATE TABLE
+    Player (
+        PlayerID INT AUTO_INCREMENT PRIMARY KEY,
+        Username VARCHAR(64) NOT NULL,
+        Email VARCHAR(128) NOT NULL UNIQUE,
+        Password VARCHAR(256) NOT NULL,
+        LoginAttemps INT DEFAULT 0,
+        TimeOut BOOLEAN DEFAULT FALSE,
+        AvatarID INT,
+        CreatedAt DATETIME DEFAULT CURRENT_TIMESTAMP,
+        LastLogin DATETIME DEFAULT NULL);
+        
 
-USE gretris;
+-- Create table Game --
+CREATE TABLE
+    Game (
+        GameID INT AUTO_INCREMENT PRIMARY KEY,
+        PlayerID INT,
+        StartTime DATETIME DEFAULT CURRENT_TIMESTAMP,
+        EndTime TIME);
+        
 
--- --------------------------------------------------------
+-- Create table Score --
+CREATE TABLE
+    Score (
+        ScoreID INT AUTO_INCREMENT PRIMARY KEY,
+        GameID INT,
+        LinesCleared INT DEFAULT 0,
+        PiecesDropped INT DEFAULT 0,
+        Points INT DEFAULT 0,
+        Level INT,
+        Creation DATETIME DEFAULT CURRENT_TIMESTAMP);
 
---
--- Structure de la table `avatars`
---
+ALTER TABLE game ADD CONSTRAINT fk_player_game FOREIGN KEY (PlayerID) REFERENCES player(PlayerID) ON DELETE CASCADE;
 
+ALTER TABLE score ADD CONSTRAINT fk_game_score FOREIGN KEY (GameID) REFERENCES game(GameID) ON DELETE CASCADE;
 
-DROP TABLE IF EXISTS `avatar`;
-CREATE TABLE IF NOT EXISTS `avatar` (
-  `AvatarID` int NOT NULL AUTO_INCREMENT,
-  `AvatarName` varchar(64) NOT NULL,
-  `ImageUrl` varchar(256) DEFAULT NULL,
-  PRIMARY KEY (`AvatarID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
--- --------------------------------------------------------
-
---
--- Structure de la table `game`
---
-
-DROP TABLE IF EXISTS `game`;
-CREATE TABLE IF NOT EXISTS `game` (
-  `GameID` int NOT NULL AUTO_INCREMENT,
-  `PlayerID` int DEFAULT NULL,
-  `StartTime` datetime DEFAULT CURRENT_TIMESTAMP,
-  `EndTime` time DEFAULT NULL,
-  PRIMARY KEY (`GameID`),
-  KEY `PlayerID` (`PlayerID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
--- --------------------------------------------------------
-
---
--- Structure de la table `player`
---
-
-DROP TABLE IF EXISTS `player`;
-CREATE TABLE IF NOT EXISTS `player` (
-  `PlayerID` int NOT NULL AUTO_INCREMENT,
-  `Username` varchar(128) NOT NULL,
-  `Email` varchar(128) NOT NULL,
-  `Password` varchar(128) NOT NULL,
-  `LoginAttemps` int DEFAULT '0',
-  `TimeOut` tinyint(1) DEFAULT '0',
-  `AvatarID` int DEFAULT NULL,
-  `CreatedAt` datetime DEFAULT CURRENT_TIMESTAMP,
-  `LastLogin` datetime DEFAULT NULL,
-  PRIMARY KEY (`PlayerID`),
-  UNIQUE KEY `Email` (`Email`),
-  KEY `AvatarID` (`AvatarID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
--- --------------------------------------------------------
-
---
--- Structure de la table `score`
---
-
-DROP TABLE IF EXISTS `score`;
-CREATE TABLE IF NOT EXISTS `score` (
-  `ScoreID` int NOT NULL AUTO_INCREMENT,
-  `GameID` int DEFAULT NULL,
-  `LinesCleared` int DEFAULT '0',
-  `PiecesDropped` int DEFAULT '0',
-  `Points` int DEFAULT '0',
-  `Level` int DEFAULT NULL,
-  `Creation` datetime DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`ScoreID`),
-  KEY `GameID` (`GameID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+ALTER TABLE player ADD CONSTRAINT fk_avatar_game FOREIGN KEY (AvatarID) REFERENCES Avatar (AvatarID);
