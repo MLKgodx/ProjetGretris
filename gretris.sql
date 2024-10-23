@@ -27,8 +27,8 @@ SET time_zone = "+00:00";
 -- Structure de la table `avatars`
 --
 
-DROP TABLE IF EXISTS `avatars`;
-CREATE TABLE IF NOT EXISTS `avatars` (
+DROP TABLE IF EXISTS `avatar`;
+CREATE TABLE IF NOT EXISTS `avatar` (
   `AvatarID` int NOT NULL AUTO_INCREMENT,
   `AvatarName` varchar(64) NOT NULL,
   `ImageUrl` varchar(256) DEFAULT NULL,
