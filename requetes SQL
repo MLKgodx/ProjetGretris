@@ -12,7 +12,7 @@ GRANT SELECT, INSERT, UPDATE, DELETE ON gretris.* TO 'AdminGretris'@'localhost';
 UPDATE `player` SET `Username` = 'Zakeny' WHERE `player`.`PlayerID` = 2;
 
 -- Supprimer un joueur --
-DELETE FROM player WHERE `player`.`PlayerID` = 1 »
+DELETE FROM player WHERE PlayerID = 1;
 
 -- Lister les scores -- +
 SELECT score.GameID, score.LinesCleared, score.PiecesDropped, score.Points, score.Level
