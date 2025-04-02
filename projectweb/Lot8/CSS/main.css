@@ -1,0 +1,12 @@
+/* main.css - Point d'entrée principal qui importe tous les autres fichiers CSS */
+
+/* Import des différents fichiers CSS */
+@import 'variables.css';  /* Variables et thèmes */
+@import 'base.css';       /* Styles de base et reset */
+@import 'layout.css';     /* Structure principale du site */
+@import 'components.css'; /* Composants réutilisables */
+@import 'game.css';       /* Styles spécifiques au jeu */
+@import 'animations.css'; /* Toutes les animations keyframes */
+@import 'responsive.css'; /* Media queries pour le responsive */
+@import 'history.css';    /* Styles pour la page d'historique */
+@import 'account_settings.css' /* Styles pour la page de paramètres du compte */

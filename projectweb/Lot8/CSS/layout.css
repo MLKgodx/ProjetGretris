@@ -1,0 +1,97 @@
+/* layout.css - Structure principale du site */
+
+/* Layout Structure */
+.main-content {
+    min-height: 75vh;
+    padding-top: var(--header-height);
+    padding-bottom: var(--footer-height);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* Assurez-vous que cette ligne est présente */
+    position: relative; /* Ajout pour permettre un positionnement absolu des enfants */
+}
+
+/* Header */
+.header-main {
+    background: #222;
+    border: none;
+    border-top: 4px solid #333;
+    border-left: 4px solid #333;
+    border-bottom: 4px solid #111;
+    border-right: 4px solid #111;
+    padding: 1rem;
+    text-align: center;
+    image-rendering: pixelated;
+    box-shadow: 
+        0 8px 0 rgba(0, 0, 0, 0.2),
+        inset 2px 2px 0 rgba(255, 255, 255, 0.1),
+        inset -2px -2px 0 rgba(0, 0, 0, 0.3);
+}
+
+.header-main h1 {
+    color: var(--soul-blue);
+    text-shadow: 0 0 15px var(--focus-glow);
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+}
+
+.header-main .subtitle {
+    color: var(--pale-white);
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    opacity: 0.9;
+}
+
+.user-welcome {
+    background: #222;
+    border: none;
+    border-top: 4px solid #333;
+    border-left: 4px solid #333;
+    border-bottom: 4px solid #111;
+    border-right: 4px solid #111;
+    margin: 0.5rem auto;
+    padding: 0.5rem 1rem;
+    width: fit-content;
+    text-align: center;
+    image-rendering: pixelated;
+    box-shadow: 
+        4px 4px 0 rgba(0, 0, 0, 0.2),
+        inset 2px 2px 0 rgba(255, 255, 255, 0.1),
+        inset -2px -2px 0 rgba(0, 0, 0, 0.3);
+}
+
+.user-welcome p {
+    color: var(--soul-blue);
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+}
+
+/* Footer */
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: var(--footer-height);
+    background: #222;
+    border: none;
+    border-top: 4px solid #333;
+    border-left: 4px solid #333;
+    border-bottom: 4px solid #111;
+    border-right: 4px solid #111;
+    padding: 0.5rem;
+    text-align: center;
+    z-index: 100;
+    image-rendering: pixelated;
+    box-shadow: 
+        inset 2px 2px 0 rgba(255, 255, 255, 0.1),
+        inset -2px -2px 0 rgba(0, 0, 0, 0.3);
+}
+
+footer p {
+    color: var(--pale-white);
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+    padding: 0.5rem 0;
+}

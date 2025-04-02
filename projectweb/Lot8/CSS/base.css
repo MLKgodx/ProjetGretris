@@ -1,0 +1,28 @@
+/* base.css - Reset et styles de base */
+
+/* Reset & Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100vh;
+    overflow: hidden; /* Garder hidden par défaut pour les autres pages */
+}
+
+/* Pour les pages d'historique et d'autres qui nécessitent le défilement */
+html.scrollable,
+body.scrollable {
+    height: auto !important;
+    overflow: auto !important;
+}
+
+body {
+    font-family: 'Minecraft', system-ui, -apple-system, sans-serif;
+    color: var(--pale-white);
+    background: var(--void-black) url('../images/4ec77oea73c41.gif') center/cover fixed;
+    position: relative;
+}

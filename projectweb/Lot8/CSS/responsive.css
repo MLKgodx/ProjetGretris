@@ -1,0 +1,78 @@
+/* responsive.css - Media queries pour l'adaptabilité */
+
+@media (max-width: 968px) {
+    .header-main h1 {
+        font-size: 2.5rem;
+    }
+
+    .header-main .subtitle {
+        font-size: 1rem;
+    }
+
+    footer p {
+        font-size: 0.9rem;
+    }
+
+    .game-container {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    #grid {
+        grid-template-columns: repeat(10, var(--grid-cell-size-mobile));
+        grid-template-rows: repeat(20, var(--grid-cell-size-mobile));
+        padding: 10px;
+    }
+
+    .cell {
+        width: var(--grid-cell-size-mobile);
+        height: var(--grid-cell-size-mobile);
+    }
+
+    .side-panel {
+        width: 100%;
+        max-width: 400px;
+    }
+}
+
+@media (max-width: 1600px) {
+
+    .registration-container {
+        margin-top: 20px;
+        margin-bottom: 2rem;
+    }
+
+    .game-container {
+        gap: 3rem; /* Moins d'espace entre les éléments */
+    }
+    
+    #grid {
+        grid-template-columns: repeat(10, calc(var(--grid-cell-size) * 0.9));
+        grid-template-rows: repeat(20, calc(var(--grid-cell-size) * 0.9));
+    }
+    
+    .cell {
+        width: calc(var(--grid-cell-size) * 0.9);
+        height: calc(var(--grid-cell-size) * 0.9);
+    }
+    
+    .side-panel {
+        width: 250px;
+    }
+
+}
+
+@media (max-width: 768px) {
+    .settings-gear {
+        top: 15px;
+        right: 15px;
+        width: 45px;
+        height: 45px;
+        padding: 9px;
+    }
+    
+    .settings-dropdown {
+        top: 65px;
+        right: 15px;
+    }
+}

@@ -1,0 +1,222 @@
+/* history.css - Styles spécifiques pour la page d'historique des parties */
+
+/* Réinitialisation pour permettre le défilement */
+body.history-page,
+html.history-page {
+    height: auto !important;
+    overflow: auto !important;
+}
+
+/* Ajout d'espacement entre les lettres pour tout le contenu de la page */
+.main-content {
+    letter-spacing: 1.2px; /* Espacement global pour tout le contenu */
+}
+
+/* Conteneur principal de l'historique */
+.history-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Ajustements pour le conteneur principal */
+.history-page .main-content,
+.main-content {
+    padding-top: calc var(--header-height);
+    padding-bottom: calc(var(--footer-height) + 40px);
+}
+
+/* Grille pour les statistiques */
+.stats-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-bottom: 2.5rem;
+    justify-content: center;
+    align-items: stretch;
+    width: 100%;
+    max-width: 1000px;
+}
+
+/* Titres de la page d'historique */
+.history-title {
+    text-align: center;
+    color: var(--soul-blue);
+    margin-bottom: 2rem;
+    margin-top: 1.5rem;
+    padding: 1.2rem 0;
+    font-size: 2.2rem;
+    text-shadow: 0 0 10px var(--focus-glow);
+    background: rgba(18, 18, 18, 0.4);
+    letter-spacing: 2px;
+    width: 100%;
+    max-width: 800px;
+    border-top: 2px solid var(--soul-blue);
+    border-bottom: 2px solid var(--soul-blue);
+    letter-spacing: 2px;
+}
+
+.history-subtitle {
+    text-align: center;
+    color: var(--soul-blue);
+    margin: 2rem 0 1.5rem;
+    padding: 0.8rem 0;
+    font-size: 1.8rem;
+    letter-spacing: 1.8px; /* Espacement pour les sous-titres */
+}
+
+/* Élément statistique */
+.stat-label {
+    font-size: 1.3rem;
+    color: var(--soul-blue);
+    margin-bottom: 1rem;
+    display: block;
+    text-align: center;
+    padding-bottom: 0.8rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    letter-spacing: 2px; /* Espacement plus accentué pour les étiquettes de stats */
+    text-transform: uppercase; /* Mettre en majuscules pour plus d'impact */
+}
+
+.player-value {
+    line-height: 1.8;
+    letter-spacing: 1px; /* Espacement léger pour les valeurs */
+}
+
+.player-value p {
+    margin-bottom: 0.8rem;
+}
+
+/* Tableau d'historique */
+.history-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: rgba(18, 18, 18, 0.8);
+    border: 2px solid var(--soul-blue);
+    margin-bottom: 2rem;
+}
+
+.history-table th {
+    padding: 1.2rem;
+    text-align: left;
+    border-bottom: 2px solid var(--soul-blue);
+    color: var(--soul-blue);
+    font-size: 1.1rem;
+    letter-spacing: 1.5px; /* Espacement pour les en-têtes de tableau */
+    text-transform: uppercase; /* En-têtes en majuscules pour distinction */
+    font-weight: bold;
+}
+
+.history-table td {
+    padding: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 1rem;
+    line-height: 1.5;
+    letter-spacing: 1px; /* Espacement pour les cellules du tableau */
+}
+
+/* Styles pour les parties en cours */
+.game-in-progress {
+    background-color: rgba(255, 193, 7, 0.1);
+}
+
+/* Badges de statut */
+.status-badge {
+    display: inline-block;
+    padding: 0.3rem 0.6rem;
+    border-radius: 3px;
+    letter-spacing: 1px; /* Espacement pour les badges */
+}
+
+.status-in-progress {
+    background-color: rgba(255, 193, 7, 0.2);
+    color: #ffc107;
+    border: 1px solid #ffc107;
+}
+
+.status-completed {
+    background-color: rgba(40, 167, 69, 0.2);
+    color: #28a745;
+    border: 1px solid #28a745;
+}
+
+/* Message quand aucune partie n'est trouvée */
+.no-games-message {
+    padding: 2rem;
+    text-align: center;
+    background: rgba(18, 18, 18, 0.8);
+    border: 2px solid var(--soul-blue);
+    max-width: 600px;
+    margin: 0 auto;
+    letter-spacing: 1.5px; /* Espacement pour le message */
+}
+
+/* Style pour les unités de temps */
+.time-unit {
+    display: inline-block;
+    color: var(--soul-blue);
+    font-weight: bold;
+    margin-left: 2px;
+}
+
+/* Style pour le numéro de partie */
+.history-table td:first-child {
+    font-weight: bold;
+    color: var(--soul-blue);
+    letter-spacing: 1.5px; /* Espacement plus important pour le numéro de partie */
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .history-table {
+        font-size: 0.85rem;
+    }
+
+    .history-table th,
+    .history-table td {
+        padding: 0.8rem;
+        letter-spacing: 0.8px; /* Espacement réduit sur petits écrans */
+    }
+
+    .stat-item {
+        min-width: 250px;
+    }
+
+    .status-badge {
+        padding: 0.2rem 0.4rem;
+        font-size: 0.75rem;
+    }
+
+    .history-title {
+        letter-spacing: 1.5px; /* Espacement réduit sur petits écrans */
+    }
+}
+
+.best-game {
+    background-color: rgba(0, 123, 255, 0.15);
+    border: 2px solid var(--soul-blue) !important;
+    position: relative;
+    transition: all 0.3s ease;
+    animation: best-game-glow 3s infinite;
+}
+
+.best-game:hover {
+    background-color: rgba(0, 123, 255, 0.25);
+}
+
+/* Badge pour indiquer le meilleur score */
+.best-score-badge {
+    display: inline-block;
+    background-color: var(--soul-blue);
+    color: #000;
+    padding: 0.2rem 0.5rem;
+    border-radius: 3px;
+    font-size: 0.8rem;
+    margin-left: 0.5rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
