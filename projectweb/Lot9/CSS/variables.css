@@ -1,0 +1,37 @@
+/* variables.css - Définition de toutes les variables CSS */
+
+:root {
+    /* Theme Colors - Hollow Knight Inspired */
+    --void-black: #121212;
+    --pale-white: #F0F0F0;
+    --stone-gray: #9B9B9B;
+    --light-gray: #E0E0E0;
+    --dark-gray: #353535;
+    --border-gray: #4A4A4A;
+    --text-gray: #8C8C8C;
+    --soul-blue: #fcfcfc; /* Variable manquante mais référencée dans le code */
+
+    /* Backgrounds */
+    --panel-bg: rgba(18, 18, 18, 0.85);
+    --cell-bg: #2A2A2A;
+    --crack-color: rgba(255, 255, 255, 0.5);
+
+    /* Effects */
+    --focus-glow: rgba(200, 200, 200, 0.3);
+    --spirit-border: rgba(150, 150, 150, 0.2);
+    --glow-strong: rgba(44, 46, 46, 0.5);
+    --glow-medium: rgba(61, 63, 63, 0.3);
+    --glow-soft: rgba(79, 181, 193, 0.1);
+    --glass: rgba(18, 18, 18, 0.75);
+    --ui-border: #404040;
+    --button-active: #202020;
+
+    /* Layout */
+    --header-height: 70px;
+    --footer-height: 70px;
+    --grid-cell-size: 35px;
+    --grid-cell-size-mobile: 30px;
+    --border-radius: 0px; /* Changé pour un style plus pixelisé */
+    --button-padding: 0.8rem 1.5rem;
+    --panel-padding: 1.5rem;
+}

@@ -1,0 +1,290 @@
+/* game.css - Styles spécifiques au jeu */
+
+/* Game Structure */
+.game-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4rem;
+    padding: 1rem;
+    margin-top: calc((var(--header-height) - var(--footer-height)) / 2);
+    z-index: 1;
+}
+
+/* Main Grid */
+#grid {
+    display: grid;
+    grid-template-columns: repeat(10, var(--grid-cell-size));
+    grid-template-rows: repeat(20, var(--grid-cell-size));
+    gap: 2px;
+    padding: 15px;
+    background: rgba(10, 10, 15, 0.9);
+    border: none;
+    border-top: 4px solid #333;
+    border-left: 4px solid #333;
+    border-bottom: 4px solid #111;
+    border-right: 4px solid #111;
+    image-rendering: pixelated;
+    box-shadow:
+        8px 8px 0 rgba(0, 0, 0, 0.2),
+        inset 2px 2px 0 rgba(255, 255, 255, 0.1),
+        inset -2px -2px 0 rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(5px);
+    position: relative;
+    background-color: #222;
+}
+
+#grid::after {
+    content: "";
+    position: absolute;
+    inset: 4px;
+    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAYAAABytg0kAAAAFElEQVQYV2NkYGD4z8DAwMjIAAUADikBA/gvnngAAAAASUVORK5CYII=");
+    background-repeat: repeat;
+    background-size: 2px 2px;
+    opacity: 0.05;
+    pointer-events: none;
+}
+
+#grid::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(90deg,
+            transparent 0%,
+            rgba(100, 181, 246, 0.05) 50%,
+            transparent 100%);
+    pointer-events: none;
+}
+
+/* Grid Cells */
+.cell {
+    width: var(--grid-cell-size);
+    height: var(--grid-cell-size);
+    background: rgba(18, 18, 18, 0.8);
+    border: 1px solid rgba(100, 181, 246, 0.1);
+    transition: all 0.3s ease;
+    box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.05),
+                inset -1px -1px 0 rgba(0, 0, 0, 0.2);
+    image-rendering: pixelated;
+}
+
+.libre {
+    background: var(--void-black);
+    border: 1px solid black;
+}
+
+.tetromino {
+    background-size: auto;
+    background-repeat: no-repeat;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    animation: glow-pulse 3s infinite;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.placed {
+    background-image: inherit;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 0 10px rgba(247, 247, 247, 0.3);
+    animation: none;
+    transform: none;
+    opacity: 0.9;
+}
+
+.shadow {
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px dashed var(--soul-blue);
+    box-shadow: inset 0 0 10px rgba(100, 181, 246, 0.1);
+}
+
+.shadow.durability-2 {
+    opacity: 0.3;
+    background: linear-gradient(45deg,
+            transparent 45%, var(--soul-blue) 45%,
+            var(--soul-blue) 55%, transparent 55%);
+}
+
+.shadow.durability-1 {
+    opacity: 0.2;
+    background: linear-gradient(45deg,
+            transparent 40%, var(--soul-blue) 40%,
+            var(--soul-blue) 60%, transparent 60%),
+        linear-gradient(-45deg,
+            transparent 40%, var(--soul-blue) 40%,
+            var(--soul-blue) 60%, transparent 60%);
+}
+
+.falling {
+    animation: fall 0.3s ease-in forwards;
+}
+
+.impact {
+    animation: impact 0.2s ease-out;
+}
+
+/* Tetromino Types */
+.tetromino-i {
+    background-image: url('../images/sprite/minerai1.jpg');
+}
+
+.tetromino-o {
+    background-image: url('../images/sprite/Diamant.webp');
+}
+
+.tetromino-t {
+    background-image: url('../images/sprite/Creeper.webp');
+    position: relative;
+}
+
+.tetromino-s {
+    background-image: url('../images/sprite/Ruby.jpg');
+}
+
+.tetromino-z {
+    background-image: url('../images/sprite/or.png');
+}
+
+.tetromino-j {
+    background-image: url('../images/sprite/Wood.jpg');
+}
+
+.tetromino-l {
+    background-image: url('../images/sprite/Dirt.webp');
+}
+
+.tetromino-x {
+    background-image: url('../images/sprite/Sand.jpg');
+}
+
+.tetromino-plus {
+    background-image: url('../images/sprite/Netherrack.jpg');
+}
+
+.tetromino-t::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center,
+            rgba(255, 68, 0, 0.2) 0%,
+            transparent 70%);
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+/* Durability States */
+.tetromino.durability-2 {
+    opacity: 0.95;
+    position: relative;
+    animation: crack-stage1 0.3s forwards;
+}
+
+.tetromino.durability-1 {
+    opacity: 0.9;
+    position: relative;
+    animation: crack-stage2 0.3s forwards;
+}
+
+.tetromino.durability-2::before,
+.tetromino.durability-1::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(45deg, transparent 45%, var(--crack-color) 45%, var(--crack-color) 55%, transparent 55%),
+        linear-gradient(-45deg, transparent 45%, var(--crack-color) 45%, var(--crack-color) 55%, transparent 55%);
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.tetromino.durability-1::before {
+    background:
+        linear-gradient(45deg, transparent 40%, var(--crack-color) 40%, var(--crack-color) 60%, transparent 60%),
+        linear-gradient(-45deg, transparent 40%, var(--crack-color) 40%, var(--crack-color) 60%, transparent 60%),
+        linear-gradient(90deg, transparent 45%, var(--crack-color) 45%, var(--crack-color) 55%, transparent 55%),
+        linear-gradient(0deg, transparent 45%, var(--crack-color) 45%, var(--crack-color) 55%, transparent 55%);
+    opacity: 0.7;
+}
+
+/* Breaking Animation Effects */
+.tetromino.breaking {
+    position: relative;
+    overflow: hidden;
+    animation: complex-shatter 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+
+.tetromino.breaking::before,
+.tetromino.breaking::after {
+    content: '';
+    position: absolute;
+    background-image: inherit;
+    background-size: cover;
+    opacity: 0.8;
+}
+
+.tetromino.breaking::before {
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background-position: top left;
+    animation: fragment-scatter-1 0.5s ease-out forwards;
+}
+
+.tetromino.breaking::after {
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background-position: bottom right;
+    animation: fragment-scatter-2 0.5s ease-out forwards;
+}
+
+.tetromino.breaking .crack-overlay {
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(45deg, transparent 45%, rgba(255, 255, 255, 0.3) 45%, rgba(255, 255, 255, 0.3) 55%, transparent 55%),
+        linear-gradient(-45deg, transparent 45%, rgba(255, 255, 255, 0.3) 45%, rgba(255, 255, 255, 0.3) 55%, transparent 55%);
+    opacity: 0.7;
+    pointer-events: none;
+    animation: crack-expand 0.3s ease-out forwards;
+}
+
+.tetromino.breaking .particle {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    animation: particle-scatter 0.5s ease-out forwards;
+}
+
+.breaking {
+    animation: shake 0.2s ease-in-out;
+}
+
+.crack-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../images/crack.png');
+    opacity: 0;
+    animation: crack-appear 0.3s forwards;
+}
+
+.particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    animation: particle-scatter 0.5s ease-out forwards;
+}

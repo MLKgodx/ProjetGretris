@@ -1,0 +1,89 @@
+/* base.css - Reset et styles de base */
+
+/* Reset & Base Styles */
+
+/* Empêcher le curseur de texte sur les éléments non-formulaires */
+body,
+div,
+span,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+section,
+header,
+footer,
+main,
+aside,
+nav,
+.game-container,
+.side-panel,
+.stats-container,
+.stat-item,
+.player-info,
+.button-container,
+.menu-button,
+.control-btn,
+.game-over-overlay,
+.game-over-content,
+.header-container,
+.settings-gear,
+.settings-dropdown {
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    cursor: default;
+}
+
+/* Permettre la sélection de texte uniquement dans les formulaires */
+input,
+textarea,
+[contenteditable="true"] {
+    user-select: text;
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    cursor: text;
+}
+
+/* Définir le bon curseur pour les éléments interactifs */
+button,
+a,
+.menu-button,
+.control-btn,
+.settings-gear {
+    cursor: pointer;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100vh;
+    overflow: hidden;
+    /* Garder hidden par défaut pour les autres pages */
+}
+
+/* Pour les pages d'historique et d'autres qui nécessitent le défilement */
+html.scrollable,
+body.scrollable {
+    height: auto !important;
+    overflow: auto !important;
+}
+
+body {
+    font-family: 'Minecraft', system-ui, -apple-system, sans-serif;
+    color: var(--pale-white);
+    background: var(--void-black) url('../images/4ec77oea73c41.gif') center/cover fixed;
+    position: relative;
+}
+

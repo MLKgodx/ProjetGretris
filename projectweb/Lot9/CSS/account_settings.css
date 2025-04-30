@@ -1,0 +1,301 @@
+/* account_settings.css - Styles spécifiques pour la page des paramètres du compte */
+
+/* Structure générale de la page */
+.main-content.scrollable {
+    padding-top: 120px;
+    padding-bottom: 100px;
+}
+
+.account-title {
+    text-align: center;
+    color: var(--soul-blue);
+    margin-bottom: 2rem;
+    margin-top: 1.5rem;
+    padding: 1.2rem 0;
+    font-size: 2.2rem;
+    text-shadow: 0 0 10px var(--focus-glow);
+    background: rgba(18, 18, 18, 0.4);
+    letter-spacing: 2px;
+    width: 100%;
+    max-width: 800px;
+    border-top: 2px solid var(--soul-blue);
+    border-bottom: 2px solid var(--soul-blue);
+    letter-spacing: 2px;
+}
+
+.account-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 95%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Message container */
+.message-container {
+    background: rgba(18, 18, 18, 0.8);
+    border: 2px solid;
+    padding: 1rem;
+    margin: 1rem auto 2rem;
+    width: 90%;
+    max-width: 700px;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+.message-container.success {
+    border-color: #28a745;
+    color: #28a745;
+}
+
+.message-container.error {
+    border-color: #dc3545;
+    color: #dc3545;
+}
+
+/* Panels */
+.account-info-panel,
+.account-form-panel {
+    background: rgba(18, 18, 18, 0.8);
+    border: none;
+    border-top: 4px solid #333;
+    border-left: 4px solid #333;
+    border-bottom: 4px solid #111;
+    border-right: 4px solid #111;
+    padding: 1.5rem;
+    image-rendering: pixelated;
+    box-shadow: 
+        8px 8px 0 rgba(0, 0, 0, 0.2),
+        inset 2px 2px 0 rgba(255, 255, 255, 0.1),
+        inset -2px -2px 0 rgba(0, 0, 0, 0.3);
+}
+
+.account-info-panel h2,
+.account-form-panel h2 {
+    color: var(--soul-blue);
+    font-size: 1.4rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.5);
+    letter-spacing: 2px;
+    text-align: center;
+}
+
+/* Informations actuelles */
+.current-info {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.avatar-display {
+    width: 120px;
+    height: 120px;
+    border: 3px solid var(--soul-blue);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    image-rendering: pixelated;
+    box-shadow: 0 0 10px rgba(79, 181, 193, 0.3);
+    flex-shrink: 0;
+}
+
+.current-avatar {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.default-avatar {
+    width: 100%;
+    height: 100%;
+    background-color: #525252;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+    color: var(--pale-white);
+}
+
+.user-details {
+    flex-grow: 1;
+}
+
+.user-details p {
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    line-height: 1.6;
+}
+
+.user-details strong {
+    color: var(--soul-blue);
+    margin-right: 0.5rem;
+}
+
+/* Formulaires */
+.account-form-panel form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group label {
+    color: var(--pale-white);
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    padding-left: 0.3rem;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    background: #111;
+    border: none;
+    border-top: 2px solid #000;
+    border-left: 2px solid #000;
+    border-bottom: 2px solid #333;
+    border-right: 2px solid #333;
+    color: var(--pale-white);
+    font-family: 'Minecraft', system-ui, -apple-system, sans-serif;
+    font-size: 1rem;
+    box-shadow: inset 2px 2px 0 rgba(0, 0, 0, 0.2);
+    image-rendering: pixelated;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-top: 2px solid #111;
+    border-left: 2px solid #111;
+    border-bottom: 2px solid var(--soul-blue);
+    border-right: 2px solid var(--soul-blue);
+    background-color: #1a1a1a;
+    box-shadow: 
+        0 0 8px rgba(79, 181, 193, 0.3),
+        inset 2px 2px 0 rgba(0, 0, 0, 0.3);
+}
+
+.form-actions {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+/* Avatar Selection Grid */
+.avatar-selection-panel {
+    margin-top: 1rem;
+}
+
+.avatar-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.avatar-option {
+    text-align: center;
+}
+
+.avatar-option input[type="radio"] {
+    display: none;
+}
+
+.avatar-option label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem;
+    border: 2px solid #333;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.avatar-option label img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    image-rendering: pixelated;
+}
+
+.avatar-option label span {
+    font-size: 0.9rem;
+    color: var(--pale-white);
+    letter-spacing: 1px;
+}
+
+.avatar-option input[type="radio"]:checked + label {
+    border-color: var(--soul-blue);
+    background-color: rgba(79, 181, 193, 0.2);
+    box-shadow: 0 0 10px rgba(79, 181, 193, 0.3);
+}
+
+.avatar-option label:hover {
+    border-color: #666;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.no-avatars-message {
+    text-align: center;
+    padding: 2rem;
+    color: var(--pale-white);
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+}
+
+/* Navigation buttons */
+.button-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 95%;
+    max-width: 300px;
+    margin: 2rem auto;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .current-info {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .avatar-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .account-info-panel, 
+    .account-form-panel {
+        padding: 1rem;
+    }
+}
+
+/* Animations */
+.account-form-panel, 
+.account-info-panel {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.account-form-panel:hover, 
+.account-info-panel:hover {
+    transform: translateY(-2px);
+    box-shadow: 
+        10px 10px 0 rgba(0, 0, 0, 0.3),
+        inset 2px 2px 0 rgba(255, 255, 255, 0.1),
+        inset -2px -2px 0 rgba(0, 0, 0, 0.3);
+}
+
+.avatar-option input[type="radio"]:checked + label img {
+    animation: spirit-glow 2s infinite;
+}
